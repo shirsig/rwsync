@@ -38,7 +38,7 @@ function mrw:CHAT_MSG_WHISPER()
 end
 
 function mrw:split(str)
-	return string.gfind(str, '(%a+),?')
+	return string.gfind(str, '%s*(%a+)%s*,?')
 end
 
 function mrw:log(msg)
