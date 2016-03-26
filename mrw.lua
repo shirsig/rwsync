@@ -20,7 +20,7 @@ function mrw:ADDON_LOADED()
 				SendChatMessage('MRW:'..arg[1], 'WHISPER', nil, player)
 			end
 		end
-		return origSendChatMessage(unpack(arg))
+		return self.origSendChatMessage(unpack(arg))
 	end
 end
 
