@@ -6,19 +6,6 @@ mrw:RegisterEvent('ADDON_LOADED')
 
 mrw_listen, mrw_notify = '', ''
 
-function mrw:CHAT_MSG_WHISPER()
-	local _, _, message = strfind(arg1, '^MRW:(.*)')
-	if message then
-		for player in self:split(mrw_listen) do
-			if strupper(player) == strupper(arg2) then
-				Aux.log(message)
-				SendChatMessage(message, 'RAID_WARNING')
-				return
-			end
-		end
-	end
-end
-
 function mrw:ADDON_LOADED()
 	if arg1 ~= 'mrw' then
 		return
@@ -30,10 +17,23 @@ function mrw:ADDON_LOADED()
 	SendChatMessage = function(...)
 		if arg[2] == 'RAID_WARNING' then
 			for player in self:split(mrw_notify) do
-				SendChatMessage('MRW:'..arg[1], 'WHISPER', player)
+				SendChatMessage('MRW:'..arg[1], 'WHISPER', nil, player)
 			end
 		end
 		return origSendChatMessage(unpack(arg))
+	end
+end
+
+function mrw:CHAT_MSG_WHISPER()
+	local _, _, message = strfind(arg1, '^MRW:(.*)')
+	if message then
+		for player in self:split(mrw_listen) do
+			if strupper(player) == strupper(arg2) then
+				Aux.log(message)
+				SendChatMessage(message, 'RAID_WARNING')
+				return
+			end
+		end
 	end
 end
 
