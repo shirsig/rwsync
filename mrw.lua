@@ -29,7 +29,7 @@ function mrw:CHAT_MSG_WHISPER()
 	if message then
 		for player in self:split(mrw_listen) do
 			if strupper(player) == strupper(arg2) then
-				self.origSendChatMessage(message, 'RAID_WARNING')
+				self.origSendChatMessage('['..arg2..']: '..message, 'RAID_WARNING')
 				return
 			end
 		end
