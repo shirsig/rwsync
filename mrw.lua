@@ -52,8 +52,10 @@ function SlashCmdList.MRW(str)
 		mrw:log('Notify: '..mrw_notify)
 	elseif command == 'listen' then
 		mrw_listen = players
+		mrw:log('Listen: '..mrw_listen)
 	elseif command == 'notify' then
 		mrw_notify = players
+		mrw:log('Notify: '..mrw_notify)
 	end
 end
 
