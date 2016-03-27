@@ -13,14 +13,21 @@ function mrw:ADDON_LOADED()
 
 	self:RegisterEvent('CHAT_MSG_WHISPER')
 
-	self.origSendChatMessage = SendChatMessage
+	self.orig_SendChatMessage = SendChatMessage
 	SendChatMessage = function(...)
 		if arg[2] == 'RAID_WARNING' then
 			for player in self:split(mrw_notify) do
-				SendChatMessage('MRW:'..arg[1], 'WHISPER', nil, player)
+				self.orig_SendChatMessage('MRW:'..arg[1], 'WHISPER', nil, player)
 			end
 		end
-		return self.origSendChatMessage(unpack(arg))
+		return self.orig_SendChatMessage(unpack(arg))
+	end
+
+	self.orig_ChatFrame_OnEvent = ChatFrame_OnEvent
+	ChatFrame_OnEvent = function(...)
+		if not ((arg[1] == 'CHAT_MSG_WHISPER' or arg[1] == 'CHAT_MSG_WHISPER_INFORM') and strfind(arg1, '^MRW:(.*)')) then
+			return self.orig_ChatFrame_OnEvent(unpack(arg))
+		end
 	end
 end
 
@@ -29,7 +36,7 @@ function mrw:CHAT_MSG_WHISPER()
 	if message then
 		for player in self:split(mrw_listen) do
 			if strupper(player) == strupper(arg2) then
-				self.origSendChatMessage(arg2..': '..message, 'RAID_WARNING')
+				self.orig_SendChatMessage(arg2..': '..message, 'RAID_WARNING')
 				return
 			end
 		end
@@ -43,7 +50,7 @@ end
 function mrw:log(msg)
     DEFAULT_CHAT_FRAME:AddMessage('[mrw] '..msg, 1, 1, 0)
 end
-	
+
 SLASH_MRW1 = '/mrw'
 function SlashCmdList.MRW(str)
 	local _, _, command, players = strfind(str, '%s*(%a*)%s*(.*)')
