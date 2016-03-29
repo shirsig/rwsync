@@ -4,7 +4,7 @@ rwsync:SetScript('OnEvent', function()
 end)
 rwsync:RegisterEvent('ADDON_LOADED')
 
-rwsync_listen, rwsync_channel = '', ''
+rwsync_channel, rwsync_players = '', ''
 
 function rwsync:ADDON_LOADED()
 	if arg1 ~= 'rwsync' then
@@ -25,17 +25,17 @@ function rwsync:ADDON_LOADED()
 	self.orig_ChatFrame_OnEvent = ChatFrame_OnEvent
 	ChatFrame_OnEvent = function(...)
 		local event, channel = arg[1], arg9
-		if not (event == 'CHAT_MSG_CHANNEL' and strupper(channel) == strupper(rwsync_channel)) then
+		if not (event == 'CHAT_MSG_CHANNEL' and channel == rwsync_channel) then
 			return self.orig_ChatFrame_OnEvent(unpack(arg))
 		end
 	end
 end
 
 function rwsync:CHAT_MSG_CHANNEL()
-	local channel, message, sender = arg8, arg1, arg2
+	local channel, message, sender = arg9, arg1, arg2
 	if channel == rwsync_channel then
-		for player in self:split(rwsync_listen) do
-			if strupper(player) == strupper(sender) then
+		for player in self:split(rwsync_players) do
+			if strlower(sender) == player then
 				self.orig_SendChatMessage(sender..': '..message, 'RAID_WARNING')
 				return
 			end
@@ -51,18 +51,18 @@ function rwsync:log(msg)
     DEFAULT_CHAT_FRAME:AddMessage('[rwsync] '..msg, 1, 1, 0)
 end
 
-SLASH_MRW1 = '/rwsync'
-function SlashCmdList.MRW(str)
+SLASH_RWSYNC1 = '/rwsync'
+function SlashCmdList.RWSYNC(str)
 	local _, _, command, arg = strfind(str, '%s*(%a*)%s*(%S*)')
 	if command == '' then
-		mrw:log('Listen: '..rwsync_listen)
-		rwsync:log('Channel: '..channel)
-	elseif command == 'listen' then
-		rwsync_listen = strlower(arg)
-		rwsync:log('Listen: '..rwsync_listen)
+		rwsync:log('Channel: '..rwsync_channel)
+		rwsync:log('Players: '..rwsync_players)
 	elseif command == 'channel' then
 		rwsync_channel = strlower(arg)
 		rwsync:log('Channel: '..rwsync_channel)
+	elseif command == 'players' then
+		rwsync_players = strlower(arg)
+		rwsync:log('Players: '..rwsync_players)
 	end
 end
 

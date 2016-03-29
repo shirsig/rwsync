@@ -2,6 +2,6 @@
 ## Author: shirsig
 ## Title: rwsync
 ## Version: 1.0
-## SavedVariablesPerCharacter: rwsync_notify, rwsync_listen, rwsync_channel
+## SavedVariablesPerCharacter: rwsync_channel, rwsync_players
 
-mrw.lua
+rwsync.lua
