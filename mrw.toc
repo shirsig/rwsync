@@ -1,7 +1,0 @@
-## Interface: 11200
-## Author: shirsig
-## Title: mrw
-## Version: 1.0
-## SavedVariablesPerCharacter: mrw_notify, mrw_listen
-
-mrw.lua

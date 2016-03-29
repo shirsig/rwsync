@@ -1,0 +1,7 @@
+## Interface: 11200
+## Author: shirsig
+## Title: rwsync
+## Version: 1.0
+## SavedVariablesPerCharacter: rwsync_notify, rwsync_listen, rwsync_channel
+
+mrw.lua
