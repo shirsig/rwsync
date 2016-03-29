@@ -25,7 +25,7 @@ function rwsync:ADDON_LOADED()
 	self.orig_ChatFrame_OnEvent = ChatFrame_OnEvent
 	ChatFrame_OnEvent = function(...)
 		local event, channel = arg[1], arg9
-		if not (event == 'CHAT_MSG_CHANNEL' and channel == rwsync_channel) then
+		if not (event == 'CHAT_MSG_CHANNEL' and strlower(channel) == rwsync_channel) then
 			return self.orig_ChatFrame_OnEvent(unpack(arg))
 		end
 	end
