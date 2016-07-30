@@ -11,7 +11,6 @@ Note that all participants need to have joined the channel.
 
 Goal: There are two raid leaders, Trump and Pence, and Pence should replicate all of Trump's raid warnings.
 
-Steps:
 1. Trump and Pence both install the addon
 2. Trump and Pence both join the chosen channel: /join usa
 3. Trump and Pence both configure their channel: /rwsync channel usa
