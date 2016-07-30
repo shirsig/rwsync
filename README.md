@@ -7,7 +7,7 @@
 
 Note that all participants need to have joined the channel.
 
-Detailed steps:
+## Detailed steps
 
 Goal: There are two raid leaders, Trump and Pence, and Pence should replicate all of Trump's raid warnings.
 
