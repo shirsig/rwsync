@@ -16,5 +16,5 @@ Goal: There are two raid leaders, Trump and Pence, and Pence should replicate al
 3. Trump and Pence both configure their channel: **/rwsync channel usa**
 4. Pence adds Trump to his players list: **/rwsync players trump**
 5. Trump makes a raid warning in his raid: **_maga_**
-6. Trump's addon generates an automatic message on channel **usa**: **_maga_**
+6. Trump's addon generates an automatic (invisible) message on channel **usa**: **_maga_**
 7. Pence's addon receives the message and generates an automatic raid warning: **_Trump: maga_**
