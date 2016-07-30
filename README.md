@@ -1,10 +1,9 @@
 # rwsync - WoW 1.12 addOn
 
 ## Commands
-**/rwsync players _namelist_** (**namelist** is a comma separated list of player names (e.g., **someplayer,otherplayer,hildebeast**) whose raid warnings should be replicated)
-**/rwsync channel _channelname_** (Sets the channel to be used by the addOn to communicate with other people's addOns)
+**/rwsync players _namelist_** (**namelist** is a comma separated list of player names (e.g., **someplayer,otherplayer,hildebeast**) whose raid warnings should be replicated)<br/>
+**/rwsync channel _channelname_** (Sets the channel to be used by the addOn to communicate with other people's addOns)<br/>
 **/rwsync** (Prints configured players and channel)
-namelist is a comma separated list of player names, /rwsync by itself will print the configured players and channel.
 
 Note that all participants need to have joined the channel.
 
