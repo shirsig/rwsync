@@ -12,9 +12,9 @@ Note that all participants need to have joined the channel.
 Goal: There are two raid leaders, Trump and Pence, and Pence should replicate all of Trump's raid warnings.
 
 1. Trump and Pence both install the addon
-2. Trump and Pence both join the chosen channel: /join usa
-3. Trump and Pence both configure their channel: /rwsync channel usa
-4. Pence adds Trump to his players list: /rwsync players trump
-5. Trump makes a raid warning in his raid: **maga**
-6. Trump's addon generates an automatic message on channel testchannel: **maga**
-7. Pence's addon receives the message and generates an automatic raid warning: **Trump: maga**
+2. Trump and Pence both join the chosen channel: **/join usa**
+3. Trump and Pence both configure their channel: **/rwsync channel usa**
+4. Pence adds Trump to his players list: **/rwsync players trump**
+5. Trump makes a raid warning in his raid: **_maga_**
+6. Trump's addon generates an automatic message on channel testchannel: **_maga_**
+7. Pence's addon receives the message and generates an automatic raid warning: **_Trump: maga_**
